@@ -21,19 +21,7 @@ else
 }
 
 @section scripts{
-    <script>
-        $.connection.hub.start()
-            .done(function () {
-                console.log("connected");
-                $.connection.eventHub.server.announce("connected");
-            })
-            .fail(function () { console.log("Not connected"); });
-
-        $.connection.eventHub.server.announce = function (message) {
-            $("#Toshow").append(message + "<br />");
-
-        }
-    </script>
+<script src="~/Scripts/SignalRAPP.js"></script>
 }
 
 
