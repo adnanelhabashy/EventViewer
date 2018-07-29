@@ -30,7 +30,8 @@ else
             .fail(function () { console.log("Not connected"); });
 
         $.connection.eventHub.server.announce = function (message) {
-            $("#Toshow").append(message+"<br />");
+            $("#Toshow").append(message + "<br />");
+
         }
     </script>
 }
