@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EventViewer.Models.ViewModels.EventVM>
+
+@{
+    ViewBag.Title = "Eventts";
+}
+
+<h2>Welcome</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+   <div class="jumbotron">
+       <ul>
+           <li class="btn btn-success"><a href="/FoodAllowance/Index" style="color:white;">Check Cards</a></li>
+       </ul>
+   </div>
+   <div id="Toshow"></div>
+}
+else
+{
+    <center><h3>Please Log In</h3></center>
+}
+
+@section scripts{
+    <script>
+        $.connection.hub.start()
+            .done(function () {
+                console.log("connected");
+                $.connection.eventHub.server.announce("connected");
+            })
+            .fail(function () { console.log("Not connected"); });
+
+        $.connection.eventHub.server.announce = function (message) {
+            $("#Toshow").append(message+"<br />");
+        }
+    </script>
+}
+
+
+

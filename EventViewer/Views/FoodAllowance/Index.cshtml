@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Food allowance</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container" id="tab">
+
+    </div>
+}
+else
+{
+
+    <center><h3>Please Log In</h3></center>
+}
+
+@section scripts{
+    @if (User.Identity.IsAuthenticated)
+    {
+        <script>
+
+            $(document).ready(function () {
+                window.setInterval(function () {
+                $.ajax({
+                    url: '/FoodAllowance/CardData',
+                    type: 'GET',
+                    cache: false,
+                }).done(function (result) {
+                    debugger;
+                    $('#tab').html(result);
+                });
+                }, 500);
+            });
+
+        </script>
+    }
+}

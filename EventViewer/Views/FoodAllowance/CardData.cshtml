@@ -1,0 +1,42 @@
+﻿@model EventViewer.Models.ViewModels.CardVM
+
+@if (Model != null)
+{
+    <br />
+    <center>
+        <div class="card text-white bg-primary mb-3" style="max-width: 50rem;">
+            <div class="card-header">Card Number : @Model.CardNumber</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        @if (File.Exists(Server.MapPath("~/images/" + Model.ImageName)))
+                        {
+                            <img src="~/images/@Model.ImageName" style="border-radius:50%" width="200px" />
+                        }
+                        else
+                        {
+                            <img src="~/images/avatar.png" style="border-radius:50%" width="200px" />
+                        }
+
+                    </div>
+                    <div class="col-md-8">
+                        <p>Name : @Model.Name</p>
+                        <p>Title : @Model.Title</p>
+                        <p>Department : @Model.Department</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </center>
+}
+else
+{
+    <center><h3>No Card In</h3></center>
+}
+
+
+
+
